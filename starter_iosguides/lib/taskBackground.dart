@@ -15,7 +15,7 @@ class SmapleApp extends StatelessWidget {
     return MaterialApp(
       title: "Sample App",
       theme: ThemeData(
-        primarySwatch: Colors.orange[200],
+        primarySwatch: Colors.orange,
       ),
       home: SampleAppPage(),
     );
@@ -40,11 +40,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
   }
 
   showLoadingDialog() {
-    if (widgets.length == 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return widgets.length == 0;
   }
 
   getBody() {
@@ -77,14 +73,15 @@ class _SampleAppPageState extends State<SampleAppPage> {
   );
 
   Widget getRow(int i) {
-    return Padding(padding: EdgeInsets.all(10.0), child: Text("Row ${widgets[i]["title"]}"))
+    return Padding(padding: EdgeInsets.all(10.0), child: Text("Row ${widgets[i]["title"]}"));
   }
 
   /// load the request data.
   loadData() async {
     ReceivePort receivePort = ReceivePort();
-    await Isolate.spawn(receivePort, receivePort.sendPort);
+    await Isolate.spawn(dataLoader, receivePort.sendPort);
 
+    // The 'echo' isolate sends its SendPort as the first message
     SendPort sendPort = await receivePort.first;
 
     List msg = await sendReceive(sendPort, "https://jsonplaceholder.typicode.com/posts");
@@ -93,6 +90,33 @@ class _SampleAppPageState extends State<SampleAppPage> {
       widgets = msg;
     });
 
+  }
+
+  // the entry point for the isolate
+  static dataLoader(SendPort sendPort) async {
+
+    // Open the ReceivePort for incoming messages.
+    ReceivePort port = ReceivePort();
+
+    // Notify any other isolates what port this isolate listens to.
+    sendPort.send(port.sendPort);
+
+    await for (var msg in port) {
+      String data = msg[0];
+      SendPort replyTo = msg[1];
+
+      String dataURL = data;
+      http.Response response = await http.get(dataURL);
+
+      // Lots of JSON to parse
+      replyTo.send(json.decode(response.body));
+    }
+  }
+
+  Future sendReceive(SendPort port, msg) {
+    ReceivePort response = ReceivePort();
+    port.send([msg, response.sendPort]);
+    return response.first;
   }
 
 }

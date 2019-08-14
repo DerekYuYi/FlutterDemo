@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 /// 使用 async + await 来执行异步请求
+/// 使用 http 来构造网络请求
 
 
 class SampleApp extends StatelessWidget {
