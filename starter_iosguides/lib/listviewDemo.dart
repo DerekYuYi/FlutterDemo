@@ -65,8 +65,12 @@ class _SampleAppPageState extends State<SampleAppPage> {
         child: Text('Row $i'),
       ),
       onTap: () {
-        widgets.add(getRow(widgets.length + 1));
-        print('row $i');
+
+        /// 在该方法中，并没有重新创建列表， 而是使用 .add 方法进行添加
+        setState(() {
+          widgets.add(getRow(widgets.length + 1));
+          print('row $i');
+        });
 
         /// 使用 setState() 来更新列表。创建一个新的 List, 然后拷贝旧列表中的所有数据到新列表。 这样虽然简单. 但是数据量大的时候，不推荐， 建议使用 ListView.builder()
         /*
