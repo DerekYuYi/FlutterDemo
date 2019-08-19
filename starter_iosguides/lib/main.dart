@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-//import 'asyncDemo.dart' as asyncDemo;
-//import 'taskBackground.dart' as taskBackground;
-//import 'listviewDemo.dart' as listviewDemo;
-//import 'GestureDetectorTest.dart' as gestureDetectorTest;
-import 'formInputTest.dart' as formInputTest;
-import 'cookbook_Animation.dart' as animation;
-import 'cookbook_AnimationGradient.dart' as gradient;
+import 'cookbook_designDrawer.dart' as designdrawer;
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）
 /*
@@ -22,13 +16,8 @@ import 'cookbook_AnimationGradient.dart' as gradient;
  */
 
 //void main() => runApp(asyncDemo.SampleApp());
-//void main() => runApp(SampleApp());
-//void main() => runApp(listviewDemo.SampleApp());
-//void main() => runApp(gestureDetectorTest.SampleApp());
-//void main() => runApp(formInputTest.SampleApp());
-main() {
-  runApp(MaterialApp(home: gradient.AnimatedContainerApp()));
-}
+
+void main() => runApp(MaterialApp(home: designdrawer.MyApp()));
 
 /// 通过 Route 和 Navigator 在两个页面之间跳转
 /*
