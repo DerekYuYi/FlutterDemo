@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'cookbook_designDrawer.dart' as designdrawer;
+import 'package:starter_iosguides/Gestures/gesture_CustomButton.dart' as gesture_custom;
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）
 /*
@@ -17,7 +17,7 @@ import 'cookbook_designDrawer.dart' as designdrawer;
 
 //void main() => runApp(asyncDemo.SampleApp());
 
-void main() => runApp(MaterialApp(home: designdrawer.MyApp()));
+void main() => runApp(MaterialApp(home: gesture_custom.MyApp()));
 
 /// 通过 Route 和 Navigator 在两个页面之间跳转
 /*

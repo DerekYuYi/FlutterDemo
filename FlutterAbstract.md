@@ -41,6 +41,7 @@ Dart :
 3. final 修饰的属性表示不能改变
 4. Stateless widgets 是不可变的，这意味着它们的属性不能改变, 所有的值都是 final
 5. 在 Dart 语言中使用下划线前缀标识符，会 强制其变成私有
+6. dart 中 return 语句后一定要以 ';'结尾
 
 ### 知识点
 
@@ -63,6 +64,7 @@ Dart :
 	- 如果 widget 本身不支持检测, 那么把它封装到一个 GestureDetector 中, 并给它的 onTap 参数传递一个函数
 4. 使用 GestureDetector 来监听更多的手势: 单击事件, 双击事件, 长按事件, 垂直拖动事件, 水平拖动事件
 5. 表单提交操作需要通过特定的 widget 来实现. 类似于 iOS 中 TextField 和 TextView.
+6. 对于长寿命对象, 一定要在 initState() 和 dispose() 管理生命周期.
 
 ### flutter 的常用网站
 
@@ -87,7 +89,19 @@ Dart :
  	- 添加一个 drawer
  	- 向 drawer 中添加内容
  	- 通过编程关闭 drawer: 当用户打开 Drawer 时, Flutter 会将 drawer widget 覆盖在当前的导航堆栈上. 因此要关闭, 通过 Navigator.pop(context) 来实现.
-
+ 7. 使用 `SnackBar`(实现操作后的用户提醒功能): 在 Scafford 中显示.
+ 8. 屏幕旋转更新界面: 使用 `OrientationBuilder` 来更改列数. 可以使用 `MediaQuery.of(context).orientation` 来单独获取屏幕方向.
+ 9. 表单验证:
+ 	- 使用全局的 GlobalKey 来访问一个表单. 使用 GlobalKey.currentState() 方法去访问 FormState, 而 FormState 是在创建表单 Form 时 Flutter 自动生成的.
+ 	- FormState 类包含了 	__validate()__ 方法. 当 __validate()__ 方法被调用时, 会遍历云心表单中所有文本框的 __validator()__ 函数. 如果全部通过, validate() 就返回 true. 如果有哪个文本框验证不通过, 就会在那个文本框区域显示错误提示, 同时 validate() 返回 false.
+ 10. 如何取表单中的值:创建 `TextEditingController`, 并加到对应的 TextField 上. 
+ 11. 如何聚焦文本框: 创建 **FocusNode** -> 传递给 TextField -> `onPressed: () => FocusScope.of(context).requestFocus(myFocusNode)` 触发成为焦点(第一响应者)
+ 12. 如何响应文本框内容的更改, 比如每次在文本框的文本内容变化时都调用回调函数:
+ 		1. 给 TextField 绑定 `onChanged` 回调. 该方法不适合 `TextFormField` 组件.
+		2. 使用 **TextEditingController** 绑定为文本框的 controller 属性. 使用 `addListener()` 方法来监听 TextEditingController 的 text 变化.
+ 13. 使用 __Dismissible__ 包裹需要清除的列表单元, 实现滑动清除功能;
+ 14. 使用 __GestureDetetor__ 来捕获和处理点击动作;
+ 15. 
 ### 小知识点 
 
 终端下进入 Application 后, 没有一个应用的原因:
