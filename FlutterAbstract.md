@@ -28,7 +28,7 @@ brew install 软件名
 
 `flutter run`: 在 flutter项目 的根目录下运行
 
-### 知识点
+### 基础
 
 Material 风格的应用, 
 Material 是一种移动端和网页端通用的视觉设计语言
@@ -42,6 +42,8 @@ Dart :
 4. Stateless widgets 是不可变的，这意味着它们的属性不能改变, 所有的值都是 final
 5. 在 Dart 语言中使用下划线前缀标识符，会 强制其变成私有
 6. dart 中 return 语句后一定要以 ';'结尾
+
+
 
 ### 知识点
 
@@ -101,7 +103,17 @@ Dart :
 		2. 使用 **TextEditingController** 绑定为文本框的 controller 属性. 使用 `addListener()` 方法来监听 TextEditingController 的 text 变化.
  13. 使用 __Dismissible__ 包裹需要清除的列表单元, 实现滑动清除功能;
  14. 使用 __GestureDetetor__ 来捕获和处理点击动作;
- 15. 
+ 15. 使用 `Image.network` 直接加载网络图片. 直接支持加载 gif. 使用 __cached_network_image__ 包来实现缓存网络图片, 占位符, 和加载后图片的淡入.
+ 16. ListView:
+ 	 1. 短列表可以直接使用构造方法一次性创建;
+ 	 2. 长列表必须使用 `ListView.builder` 把数据渲染成组件, 只在从屏幕外滑到屏幕显示时才会创建;
+ 	 3. 添加随列表滚动的 app bar: 使用 __CustomScrollView__, 并在 CustomScrollView 中添加 SliverAppBar 来添加浮动的 app bar, 使用 sliverList 来添加一个列表
+ 
+### flutter 常见命令
+
+flutter pub get: 更新导入的新库
+flutter packages get: 下载下来的三方库放在 flutter 包的目录下, 而不一定是在项目目录下面.
+ 
 ### 小知识点 
 
 终端下进入 Application 后, 没有一个应用的原因:

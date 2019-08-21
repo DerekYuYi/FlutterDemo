@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:starter_iosguides/Gestures/gesture_CustomButton.dart' as gesture_custom;
+import 'package:starter_iosguides/Lists/list_ListViewUsage.dart' as listViewBase;
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）
 /*
@@ -15,9 +15,10 @@ import 'package:starter_iosguides/Gestures/gesture_CustomButton.dart' as gesture
  *
  */
 
-//void main() => runApp(asyncDemo.SampleApp());
+void main() => runApp(listViewBase.ShortListDemo());
 
-void main() => runApp(MaterialApp(home: gesture_custom.MyApp()));
+//void main() => runApp(multipleItems.MyApp(items: List<multipleItems.ListItem>.generate(1000, (i) => i % 6 == 0 ? multipleItems.HeadingItem("Heading $i") : multipleItems.MessageItem("Sender $i", "Message body $i"),
+//)));
 
 /// 通过 Route 和 Navigator 在两个页面之间跳转
 /*

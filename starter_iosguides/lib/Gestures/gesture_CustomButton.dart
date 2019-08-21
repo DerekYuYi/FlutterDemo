@@ -18,7 +18,7 @@ class MyHomePage extends StatelessWidget {
   final String title;
   
   MyHomePage({ Key key, this.title }) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +60,7 @@ class MyButton extends StatelessWidget {
   
 }
 
+// 给自定义的 Buttons 添加涟漪效果.
 class FlatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
