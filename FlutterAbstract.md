@@ -42,7 +42,12 @@ Dart :
 4. Stateless widgets 是不可变的，这意味着它们的属性不能改变, 所有的值都是 final
 5. 在 Dart 语言中使用下划线前缀标识符，会 强制其变成私有
 6. dart 中 return 语句后一定要以 ';'结尾
+7. 取变量 result 的值: Text('$result')
+8. 关键值: @required, final
 
+
+Dart 语法糖:
+1. ```Scaffold.of(context)..removeCurrentSnackBar()..showSnackBar(SnackBar(content: Text('$result')));```
 
 
 ### 知识点
@@ -108,6 +113,16 @@ Dart :
  	 1. 短列表可以直接使用构造方法一次性创建;
  	 2. 长列表必须使用 `ListView.builder` 把数据渲染成组件, 只在从屏幕外滑到屏幕显示时才会创建;
  	 3. 添加随列表滚动的 app bar: 使用 __CustomScrollView__, 并在 CustomScrollView 中添加 SliverAppBar 来添加浮动的 app bar, 使用 sliverList 来添加一个列表
+ 	 4. 在列表中实现不同的单元类型: 先实现拥有不用单元类型的数据源; 在把数据源转换成不同 Widgets
+ 17. Navigation:
+ 	 1. 传递数据到新页面: 在新页面的声明需要传递的数据源变量, 跳转时赋值即可;
+ 	 2. 导航到新页面和返回: Navigator.push() or Navigator.pop()
+ 	 3. 导航到对应名称的 Routes: 在 MaterialApp 的构造函数中初始化 `initialRoute`(从哪个路由启动页面)和 `routes`(路由列表). 然后使用 __Navigator.pushNamed(context, 'routeName')__ 去到对应路由, 使用 Navigator.pop() 返回
+ 	 4. 给特定的路由传递参数: 
+ 	 	- 1. 在 **Navigator.pushNamed()方法中的 arguments 属性**里提供需要传递的参数, 在特定路由构造函数里接受参数;
+ 	 	- 2. 从组件提取参数: 在路由表中增加对应组件 -> 使用 **Navigator.pushNamed(arguments)** 导航到组件, argument 是携带参数 -> 在特定路由使用 **ModalRoute.of(context).settings.arguments** 提取传递对应参数 arguments.
+ 	 	- 3. 还可以使用 **onGenerateRoute()** 提取参数, 然后把参数传递给组件.
+ 	 5. 页面切换时组件的转场动画: 使用 **Hero**组件. Hero 在不同 route 之间的 tag 保持一致.
  
 ### flutter 常见命令
 
