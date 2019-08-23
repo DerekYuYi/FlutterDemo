@@ -23,8 +23,7 @@ class Post {
   final String body;
   
   Post({this.userId, this.id, this.title, this.body});
-  
-  // TODO 
+
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       userId: json['userId'],

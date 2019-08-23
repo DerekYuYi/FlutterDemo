@@ -43,7 +43,9 @@ Dart :
 5. 在 Dart 语言中使用下划线前缀标识符，会 强制其变成私有
 6. dart 中 return 语句后一定要以 ';'结尾
 7. 取变量 result 的值: Text('$result')
-8. 关键值: @required, final
+
+### 关键字
+8. @required, final, await, async, this, factory, extends, dynamic
 
 
 Dart 语法糖:
