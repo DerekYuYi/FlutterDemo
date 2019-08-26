@@ -27,8 +27,19 @@ dependencies:
   transparent_image: ^1.0.0
   shared_preferences: ^0.5.3+4
 
+  # Provides tools to work with the camera on device
+  camera: ^0.5.4
+
+  # A Flutter plugin for iOS and Android for playing back video on a Widget surface
+  video_player: ^0.10.2
+
+  # Finds the correct paths to store images
+  path_provider: ^1.2.0
+
   sqflite: ^1.1.6+3
-  path: ^1.6.4
+
+  # Creates paths that work on any platform
+#  path: ^1.6.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

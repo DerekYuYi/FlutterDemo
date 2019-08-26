@@ -125,6 +125,12 @@ Dart 语法糖:
  	 	- 2. 从组件提取参数: 在路由表中增加对应组件 -> 使用 **Navigator.pushNamed(arguments)** 导航到组件, argument 是携带参数 -> 在特定路由使用 **ModalRoute.of(context).settings.arguments** 提取传递对应参数 arguments.
  	 	- 3. 还可以使用 **onGenerateRoute()** 提取参数, 然后把参数传递给组件.
  	 5. 页面切换时组件的转场动画: 使用 **Hero**组件. Hero 在不同 route 之间的 tag 保持一致.
+
+ 18. Camera 和 Video Play
+ 	1. 使用 **camera**插件实现相机模块拍摄图片和视频: 主要类有 `CameraController`, 读取照片和拍照
+ 	2. 使用 **video_player** 插件播放存储在本地文件系统中和视频和网络视频: 主要有 `VideoPlayerController`
+
+ 19. 测试: Widget 测试, Unit 测试, Integration 集成测试: 库有 **test** 和 **flutter_test**.
  
 ### flutter 常见命令
 
