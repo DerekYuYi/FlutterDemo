@@ -131,6 +131,12 @@ Dart 语法糖:
  	2. 使用 **video_player** 插件播放存储在本地文件系统中和视频和网络视频: 主要有 `VideoPlayerController`
 
  19. 测试: Widget 测试, Unit 测试, Integration 集成测试: 库有 **test** 和 **flutter_test**.
+
+### 布局教程
+
+mainAxisSize: .max, .min
+  1. Column 和 Row 用来垂直和水平方向排列组合;
+
  
 ### flutter 常见命令
 

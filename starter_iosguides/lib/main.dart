@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:starter_iosguides/Networking/networking_handleJsonInBackMode.dart' as net_backMode;
+import 'package:starter_iosguides/Codelabs/layout.dart' as layout;
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）
 /*
@@ -15,7 +16,7 @@ import 'package:starter_iosguides/Networking/networking_handleJsonInBackMode.dar
  *
  */
 
-void main() => runApp(net_backMode.MyApp());
+void main() => runApp(layout.MyApp());
 
 //void main() => runApp(multipleItems.MyApp(items: List<multipleItems.ListItem>.generate(1000, (i) => i % 6 == 0 ? multipleItems.HeadingItem("Heading $i") : multipleItems.MessageItem("Sender $i", "Message body $i"),
 //)));
