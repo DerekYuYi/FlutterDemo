@@ -6,7 +6,7 @@ Flutter 初始化指南:
 1. 安装包放在 FlutterLibrary 文件下 (FlutterLibrary 是本人自定义的文件夹), 后面大多数操作都需要在这个文件夹下面执行
 
 2. cd 到 Private, 然后执行 
-`export PATH="$PATH:`pwd`/flutter/bin"`
+`export PATH="$PATH:`pwd`/flutter/bin"` (每次执行 flutter 命令时都需要每次执行)
 
 3. 执行 flutter doctor
 
@@ -36,7 +36,7 @@ Flutter 提供了丰富的 Material 风格的 widgets.
 
 Dart :
 
-1. 使用了 (=>) 符号，这是 Dart 中单行函数或方法的简写 
+1. 使用了 (=>) 符号，这是 Dart 中单行函数或方法的简写: `=> expression` 是 `{ return expression; }`
 2. 一个 widget 的主要工作是提供一个 build() 方法来描述如何根据其他较低级别的 widgets 来显示自己
 3. final 修饰的属性表示不能改变
 4. Stateless widgets 是不可变的，这意味着它们的属性不能改变, 所有的值都是 final
