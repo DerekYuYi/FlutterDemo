@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:starter_iosguides/Codelabs/layout.dart' as layout;
 import 'package:starter_iosguides/Codelabs/FriendlychatApp.dart' as chatApp;
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）

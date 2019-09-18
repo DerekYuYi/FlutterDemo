@@ -65,10 +65,8 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       ),
       body: Container(
         child: Column(
-
           children: <Widget>[
             // 通知框架允许已接受的消息列表进行扩展以填充 Column 高度
-
             Flexible(
               child: ListView.builder(
                 padding: EdgeInsets.all(8.0),
@@ -86,7 +84,9 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             ),
           ],
         ),
-      ),
+
+        decoration: Theme.of(context).platform == TargetPlatform.iOS ?
+        BoxDecoration(border: Border(top: BorderSide(color: Colors.grey[200]))) : null),
     );
   }
 
@@ -187,7 +187,7 @@ class ChatMessage extends StatelessWidget {
           children: <Widget>[
             Container(
               margin: const EdgeInsets.only(right: 16.0),
-              child: CircleAvatar(child: Text(_name[0])), // 头像显示第一个字母
+              child: CircleAvatar(child: Text(_name[0])), // 头像显示第一个大写字母
             ),
 
             Column(
