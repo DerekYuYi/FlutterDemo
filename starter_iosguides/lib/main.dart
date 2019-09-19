@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:starter_iosguides/Codelabs/FriendlychatApp.dart' as chatApp;
+import 'package:flutter/services.dart';
+
+import 'package:starter_iosguides/Codelabs/app.dart' as storeInIOSApp;
+import 'package:starter_iosguides/Codelabs/model/app_state_model.dart';
+import 'package:provider/provider.dart';
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）
 /*
@@ -15,7 +19,17 @@ import 'package:starter_iosguides/Codelabs/FriendlychatApp.dart' as chatApp;
  *
  */
 
-void main() => runApp(chatApp.FriendlychatApp());
+void main() {
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  return runApp(
+      ChangeNotifierProvider<AppStateModel> (
+        builder: (context) => AppStateModel()..loadProducts(),
+        child: storeInIOSApp.CupertinoStoreApp(),
+      ),
+  );
+}
 
 //void main() => runApp(multipleItems.MyApp(items: List<multipleItems.ListItem>.generate(1000, (i) => i % 6 == 0 ? multipleItems.HeadingItem("Heading $i") : multipleItems.MessageItem("Sender $i", "Message body $i"),
 //)));

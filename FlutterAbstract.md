@@ -132,11 +132,25 @@ Dart 语法糖:
 
  19. 测试: Widget 测试, Unit 测试, Integration 集成测试: 库有 **test** 和 **flutter_test**.
 
-### 布局教程
+### Codelabs - 布局教程
 
 mainAxisSize: .max, .min
-  1. Column 和 Row 用来垂直和水平方向排列组合;
+  1. Column 和 Row 用来垂直和水平方向排列组合; 它们里面的组件被称为 children, Row 和 Column 被成为 parent, Row 是水平布局，Column 是垂直布局。（by the way, 跟 SwiftUI 里面的 HStack 和 VStack 一样）
+  2. Row 和 Column 首先布局的是一个固定的大小, 固定大小是不灵活的, 它们无法在布局的时候重新调整大小
+  3. 使用 Flexible Widget 来布局不固定大小
+  4. Expanded Widget: 可以包一个组件， 并且约定组件填满控件
+  5. SizedBox widget: 当包装一个组件，组件的宽高取决于设置的宽高; 当没有包装组件时, 则创建一个空的 space
+  6. Spacer Widget: 在不同组件之间创建空白。与 SizedBox 的不同
 
+### Codelabs - FriendlychatApp 小应用
+
+1. 针对 iOS 和 Android 自定义(cupertino 和 meterial)
+2. 通过聊天记录动态构建列表 ListView.builder
+3. 使用 Flexible 布局动态列表
+4. 使用 Flexible, Column, Row, Container 组合布局
+5. 添加动画(SizeTransion, CurvedAnimation)
+
+### Codelabs - 
  
 ### flutter 常见命令
 
