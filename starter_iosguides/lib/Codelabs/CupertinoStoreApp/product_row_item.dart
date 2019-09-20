@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'model/app_state_model.dart';
 import 'model/product.dart';
-import 'styles.dart';
+import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/styles.dart';
 
 /// 自定义待售商品列表的单元格
 class ProductRowItem extends StatelessWidget {

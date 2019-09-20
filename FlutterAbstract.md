@@ -1,32 +1,3 @@
-### 安装知识
-flutter config --no-analytics: 取消发送日志报告给 google
-
-Flutter 初始化指南:
-
-1. 安装包放在 FlutterLibrary 文件下 (FlutterLibrary 是本人自定义的文件夹), 后面大多数操作都需要在这个文件夹下面执行
-
-2. cd 到 Private, 然后执行 
-`export PATH="$PATH:`pwd`/flutter/bin"` (每次执行 flutter 命令时都需要每次执行)
-
-3. 执行 flutter doctor
-
-注意: 安装 andriod sdk 的方法: 直接下载 Android Studio, 然后打开该应用, 应用会自动安装 SDK, 记下 SDK 的位置 (比如我安装的位置是 `/Users/derekyuyi/Library/Android/sdk`) 
-
-按提示下载对应的提示项目, 比如要下载 Android Studio, 下载 tool 等
-
-用 flutter 进行开发, 有两个组成: editor 和 Flutter SDK. 使用 Dart 语言
-
-对于不是 dart 格式的代码, 可以: 选中代码 -> 右击 -> `Reformat Code with dartfmt`
-
-在 Flutter 中, 几乎所有的东西都是组件(widgets), 包括 alignment, padding, layout. 一个组件的主要工作是提供一个 `build()` 方法, 用来描述怎样显示由其他小组件显示的组件.
-
-Home brew 的常用命令:
-
-brew search 软件名   
-brew install 软件名  
-卸载: brew remove 软件名 
-
-`flutter run`: 在 flutter项目 的根目录下运行
 
 ### 基础
 
@@ -43,6 +14,40 @@ Dart :
 5. 在 Dart 语言中使用下划线前缀标识符，会 强制其变成私有
 6. dart 中 return 语句后一定要以 ';'结尾
 7. 取变量 result 的值: Text('$result')
+8. const 修饰局部常量
+9. static: 关键字来实现类变量和类方法
+10. abstract 修饰某个类: 定义一个抽象类, 该类不能被实例化. 抽象类在定义接口的时候非常有用, 跟 Swift 中的 Protocol 非常相同. 都承担定义一组功能的责任. 在抽象类中定义一组抽象方法. 一个类可以 implements 来实现多接口: **class C implements A, B {}, A 和 B 都是抽象类**
+11. mixin 功能: 因为没有多继承, 如果要综合多个类属性和方法可以 implements 多个接口, 如果不都是抽象类, 则可以通过 mixin 混入多个类的属性和方法.
+12. **..**: 级联表达式, 调用方法. 返回值为 void 的函数不可使用
+
+```
+class A {
+  void fnA() {
+    print('fnA');
+  }
+}
+
+abstract class B {
+  void fnB() {
+    print('fnB');
+  }
+}
+
+class C extends Object with A, B {
+  void fnA() {
+    print('C_fnA');
+  }
+}
+
+C c = new C();
+  c.fnA();
+  c.fnB();
+  c.run();
+
+```
+
+11. `..`调用是什么意思: 
+12. `double get name`: 实现 name 属性的 get 方法.
 
 ### 关键字
 8. @required, final, await, async, this, factory, extends, dynamic
@@ -150,12 +155,62 @@ mainAxisSize: .max, .min
 4. 使用 Flexible, Column, Row, Container 组合布局
 5. 添加动画(SizeTransion, CurvedAnimation)
 
-### Codelabs - 
+### Codelabs - CupertinoStoreApp (多 tab 应用)
+
+0. 概要:
+   - 目的: 创建 iOS 风格的 Flutter App;
+   - 实现如何创建多个 tab 并在他们之间切换;
+   - 使用 provider package 来实现多个界面之间的 state 管理: 使用 **Consumer<AppStateModel>( builder: (context, model, child) { })** , 拿到全局model: **final model = Provider.of<AppStateModel>(context);**
+
+1. Styles.dart: 类似 CSS 中在一个文件中组合多样式, 实现 app 的多样式定义, static const 来定义全局静态常量;
+2. app_state_model.dart: 创建 AppStateModel 来管理全局数据状态, 扩展  **ChangeNotifier**, 并在数据发生增删改查的情况下 **notifyListeners()** 去通知变化.
+	
+	```
+	class AppStateModel extends foundation.ChangeNotifier {}
+	```
+
+3. 使用的 Cupertino Widgets 包括: CupertinoApp, CupertinoTabScaffold, CupertinoTabBar, CupertinoTabView, CupertinoTextField, CupertinoButton, CupertinoPageScaffold, CupertinoSliverNavigationBar, CupertinoDatePicker
+
+4. 使用其他 widgets: SliverSafeArea, SliverList, SliverChildBuilderDelegate, ClipRRect(给组件加圆角)
+5. 常用布局: Container, SizedBox(固定宽高, 间隙), Column, Row, Padding, BoxDecoration(修饰search bar等), Expanded(使子Column, Row, Flex 自动填充),
+
  
 ### flutter 常见命令
 
 flutter pub get: 更新导入的新库
 flutter packages get: 下载下来的三方库放在 flutter 包的目录下, 而不一定是在项目目录下面.
+
+
+### 安装知识
+flutter config --no-analytics: 取消发送日志报告给 google
+
+Flutter 初始化指南:
+
+1. 安装包放在 FlutterLibrary 文件下 (FlutterLibrary 是本人自定义的文件夹), 后面大多数操作都需要在这个文件夹下面执行
+
+2. cd 到 Private, 然后执行 
+`export PATH="$PATH:`pwd`/flutter/bin"` (每次执行 flutter 命令时都需要每次执行)
+
+3. 执行 flutter doctor
+
+注意: 安装 andriod sdk 的方法: 直接下载 Android Studio, 然后打开该应用, 应用会自动安装 SDK, 记下 SDK 的位置 (比如我安装的位置是 `/Users/derekyuyi/Library/Android/sdk`) 
+
+按提示下载对应的提示项目, 比如要下载 Android Studio, 下载 tool 等
+
+用 flutter 进行开发, 有两个组成: editor 和 Flutter SDK. 使用 Dart 语言
+
+对于不是 dart 格式的代码, 可以: 选中代码 -> 右击 -> `Reformat Code with dartfmt`
+
+在 Flutter 中, 几乎所有的东西都是组件(widgets), 包括 alignment, padding, layout. 一个组件的主要工作是提供一个 `build()` 方法, 用来描述怎样显示由其他小组件显示的组件.
+
+Home brew 的常用命令:
+
+brew search 软件名   
+brew install 软件名  
+卸载: brew remove 软件名 
+
+`flutter run`: 在 flutter项目 的根目录下运行
+
  
 ### 小知识点 
 
@@ -171,4 +226,8 @@ finder 里面的 /Applications 是私有的
 linux 命令:
 
 pwd: 输出当前目录的路径
+
+### 常用的快捷键
+
+commnand + 1: 切换左侧侧边栏
 

@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/services.dart';
 
-import 'package:starter_iosguides/Codelabs/app.dart' as storeInIOSApp;
-import 'package:starter_iosguides/Codelabs/model/app_state_model.dart';
+import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/app.dart' as storeInIOSApp;
+import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/app_state_model.dart';
 import 'package:provider/provider.dart';
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）

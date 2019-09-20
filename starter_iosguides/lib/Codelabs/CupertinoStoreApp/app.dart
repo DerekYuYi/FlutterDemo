@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'styles.dart';
 import 'package:flutter/material.dart';
 
 import 'product_list_tab.dart';
@@ -53,18 +52,23 @@ class CupertinoStoreHomePage extends StatelessWidget {
                 child: ProductListTab(),
               );
             });
+
           case 1:
             return CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
                   child: SearchTab(),
               );
             });
+
           case 2:
             return CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
                   child: ShoppingCartTab(),
               );
             });
+
+          default:
+            return null;
         }
       },
     );

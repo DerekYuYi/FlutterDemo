@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'model/app_state_model.dart';
-import 'product_row_item.dart';
-import 'styles.dart';
-import 'search_bar.dart';
+import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/product_row_item.dart';
+import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/styles.dart';
+import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/search_bar.dart';
 
 /// 搜索页面。是一个 stateful widget, 因为随着用户输入文本的变化，列表中的内容也会随之变化
 class SearchTab extends StatefulWidget {
