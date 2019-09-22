@@ -172,7 +172,19 @@ mainAxisSize: .max, .min
 3. 使用的 Cupertino Widgets 包括: CupertinoApp, CupertinoTabScaffold, CupertinoTabBar, CupertinoTabView, CupertinoTextField, CupertinoButton, CupertinoPageScaffold, CupertinoSliverNavigationBar, CupertinoDatePicker
 
 4. 使用其他 widgets: SliverSafeArea, SliverList, SliverChildBuilderDelegate, ClipRRect(给组件加圆角)
-5. 常用布局: Container, SizedBox(固定宽高, 间隙), Column, Row, Padding, BoxDecoration(修饰search bar等), Expanded(使子Column, Row, Flex 自动填充),
+5. 常用布局: Container, SizedBox(固定宽高, 间隙，空位符), Column, Row, Padding, BoxDecoration(修饰search bar等), Expanded(使子Column, Row, Flex 自动填充),
+
+###  Google firebase 
+ 
+ - Flutter 和 Firebase 携手助你以极快的时间来构建移动应用。 Flutter 是 Google 推出的便携 UI  工具包，帮助你在原生平台开发精美应用。而 Firebase 进一步让移动端具有访问后端服务的能力，包括鉴权，存储，数据库以及无服务器托管的服务。
+
+###  MDC (Material Design)教程
+
+1. 新熟悉 Widgets: ButtonBar(将按钮水平放置)
+2. Cross axis 在 Flutter 中意思是不可滚动的轴。 滚动的方向称为主轴。
+3. Flutter 中，标题尾部添加按钮， 它们被称为 actions. 类似于 iOS 中的 right bar button items. 标题首部i添加按钮，被称为 leading.
+
+
 
  
 ### flutter 常见命令
@@ -229,5 +241,6 @@ pwd: 输出当前目录的路径
 
 ### 常用的快捷键
 
-commnand + 1: 切换左侧侧边栏
++ commnand + 1: 切换左侧侧边栏
++ 打开悬停注释： Preference -> Editor -> General -> `show quick documentation on mouse move Delay (ms): 500`
 

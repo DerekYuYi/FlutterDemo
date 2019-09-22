@@ -3,9 +3,12 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/services.dart';
 
-import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/app.dart' as storeInIOSApp;
-import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/app_state_model.dart';
-import 'package:provider/provider.dart';
+import 'package:starter_iosguides/Codelabs/MDC教程/app.dart' as shrine;
+
+//import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/app.dart' as storeInIOSApp;
+////import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/app_state_model.dart';
+////import 'package:provider/provider.dart';
+
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）
 /*
@@ -19,6 +22,9 @@ import 'package:provider/provider.dart';
  *
  */
 
+void main() => runApp(shrine.ShrineApp());
+
+/*
 void main() {
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -30,7 +36,7 @@ void main() {
       ),
   );
 }
-
+*/
 //void main() => runApp(multipleItems.MyApp(items: List<multipleItems.ListItem>.generate(1000, (i) => i % 6 == 0 ? multipleItems.HeadingItem("Heading $i") : multipleItems.MessageItem("Sender $i", "Message body $i"),
 //)));
 
