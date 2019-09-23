@@ -180,13 +180,13 @@ mainAxisSize: .max, .min
 
 ###  MDC (Material Design)教程
 
-1. 新熟悉 Widgets: ButtonBar(将按钮水平放置)
+1. 新熟悉 Widgets: ButtonBar(将按钮水平放置), Card, GridView
 2. Cross axis 在 Flutter 中意思是不可滚动的轴。 滚动的方向称为主轴。
-3. Flutter 中，标题尾部添加按钮， 它们被称为 actions. 类似于 iOS 中的 right bar button items. 标题首部i添加按钮，被称为 leading.
+3. Flutter 中，AppBar 中, 标题尾部添加按钮， 它们被称为 actions. 类似于 iOS 中的 right bar button items. 标题首部i添加按钮，被称为 leading.
+4. 设置样式: 如果设置全局主题样式?
+5. 一个简单的登录注册页面使用 ListView 来布局类似 Scrollview 或者 tableview 的效果: 页面可以滑动.
 
 
-
- 
 ### flutter 常见命令
 
 flutter pub get: 更新导入的新库
