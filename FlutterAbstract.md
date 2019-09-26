@@ -47,7 +47,9 @@ C c = new C();
 ```
 
 11. `..`调用是什么意思: 
-12. `double get name`: 实现 name 属性的 get 方法.
+12. `double get name`: 实现 name 属性的 get 方法.   
+13. 声明初始化函数时将其标记为 @required。 这是当构造函数中的属性没有默认值且不能为 null 时的最佳做法，切记这一标记。
+      请注意，可在构造函数之后添加了 asserts 语句，用来检查传递过来的值不会为 null
 
 ### 关键字
 8. @required, final, await, async, this, factory, extends, dynamic
@@ -185,7 +187,8 @@ mainAxisSize: .max, .min
 3. Flutter 中，AppBar 中, 标题尾部添加按钮， 它们被称为 actions. 类似于 iOS 中的 right bar button items. 标题首部i添加按钮，被称为 leading.
 4. 设置样式: 如果设置全局主题样式?
 5. 一个简单的登录注册页面使用 ListView 来布局类似 Scrollview 或者 tableview 的效果: 页面可以滑动.
-
+6. elevation: 标高值，类似于  Z 轴方向上的值
+7. 所有的内容和组件背后都有 backdrop，它包括了后层（back layer）（用来显示 actions 和 filters）以及前层（front layer）（用来显示内容）。你可以使用 backdrop 来显示交互信息和操作，比如导航栏和内容过滤器
 
 ### flutter 常见命令
 

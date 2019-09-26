@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:starter_iosguides/Codelabs/MDC/category_menu_page.dart';
 
 import 'home.dart';
 import 'login.dart';
 import 'package:starter_iosguides/colors.dart';
+import 'backdrop.dart';
+import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/product.dart';
 
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
@@ -11,10 +14,10 @@ final ThemeData _kShrineTheme = _buildShrineTheme();
 // Build a Shrine theme
 // 应用全局主题颜色
 ThemeData _buildShrineTheme() {
-  final ThemeData base = ThemeData.dark();
+  final ThemeData base = ThemeData.light(); // 类似于 light, dark mode （iOS 13 新增了 dark mode）
   return base.copyWith(
-    accentColor: kShrineAltDarkGrey,
-    primaryColor: kShrineAltDarkGrey,
+    accentColor: kShrinePink100,
+    primaryColor: kShrinePink100,
     buttonColor: kShrineAltYellow,
     scaffoldBackgroundColor: kShrineAltDarkGrey,
     cardColor: kShrineAltDarkGrey,
@@ -56,10 +59,45 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
 }
 
 
-class ShrineApp extends StatelessWidget {
+class ShrineApp extends StatefulWidget {
+
+  @override
+  _ShrineAppState createState() => _ShrineAppState();
+}
+
+class _ShrineAppState extends State<ShrineApp> {
+  Category _currentCategory = Category.all;
+
+  void _onCategoryTap(Category catogory) {
+    setState(() {
+      _currentCategory = catogory;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
+
+    return MaterialApp(
+      home: Backdrop(
+        currentCategory: _currentCategory,
+        frontLayer: HomePage(
+          category: _currentCategory,
+        ),
+        backLayer: CategoryMenuPage(
+          currentCategory: _currentCategory,
+          onCategoryTap: _onCategoryTap,
+        ),
+        frontTitle: Text('SHRINE'),
+        backTitle: Text('MENU'),
+      ),
+      theme: _kShrineTheme,
+      title: 'Shrine',
+      initialRoute: '/login',
+      onGenerateRoute: _getRoute,
+    );
+
+    /*
     return MaterialApp(
       title: 'Shrine',
       home: HomePage(),
@@ -67,6 +105,7 @@ class ShrineApp extends StatelessWidget {
       onGenerateRoute: _getRoute,
       theme: _kShrineTheme,
     );
+     */
   }
 
   Route<dynamic> _getRoute(RouteSettings settings) {
@@ -81,5 +120,4 @@ class ShrineApp extends StatelessWidget {
     );
 
   }
-
 }

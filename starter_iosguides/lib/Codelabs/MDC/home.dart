@@ -3,10 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/product.dart';
 import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/products_repository.dart';
+import 'package:starter_iosguides/Codelabs/MDC/supplemental/asymmetric_view.dart';
 
 class HomePage extends StatelessWidget {
+
+  final Category category;
+
+  const HomePage({this.category: Category.all});
+
   @override
   Widget build(BuildContext context) {
+
+    return AsymmetricView(products: ProductsRepository.loadProducts(category));
+    /*
     return Scaffold(
       appBar: AppBar(
         brightness: Brightness.dark,
@@ -50,6 +59,7 @@ class HomePage extends StatelessWidget {
         children: _buildGridCards(context)
       ),
     );
+     */
   }
 
   // Make a collection of cards

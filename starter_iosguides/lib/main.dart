@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/services.dart';
 
-import 'package:starter_iosguides/Codelabs/MDC教程/app.dart' as shrine;
+import 'package:starter_iosguides/Codelabs/MDC/app.dart' as shrine;
 
 //import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/app.dart' as storeInIOSApp;
 //import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/app_state_model.dart';
