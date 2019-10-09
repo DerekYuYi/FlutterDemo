@@ -52,7 +52,10 @@ C c = new C();
       请注意，可在构造函数之后添加了 asserts 语句，用来检查传递过来的值不会为 null
 
 ### 关键字
-8. @required, final, await, async, this, factory, extends, dynamic
+1. @required: 是当构造函数中的属性没有默认值且不能为 null 时的最佳做法. 可在构造函数之后添加 asserts 语句, 用来检查传递过来的值不会为 null.
+2. final: 修饰的属性表示不能改变
+3. await, async, this, factory, extends, dynamic
+4. get && set: 属性的 getter 方法, 属性的 setter 方法, 例如: ``` bool get _frontLayerVisible { return true }```
 
 
 Dart 语法糖:
@@ -182,13 +185,15 @@ mainAxisSize: .max, .min
 
 ###  MDC (Material Design)教程
 
-1. 新熟悉 Widgets: ButtonBar(将按钮水平放置), Card, GridView
+1. 新熟悉 Widgets: ButtonBar(将按钮水平放置), Card, GridView, Stack, Tween (创建补间动画), 
 2. Cross axis 在 Flutter 中意思是不可滚动的轴。 滚动的方向称为主轴。
 3. Flutter 中，AppBar 中, 标题尾部添加按钮， 它们被称为 actions. 类似于 iOS 中的 right bar button items. 标题首部i添加按钮，被称为 leading.
 4. 设置样式: 如果设置全局主题样式?
 5. 一个简单的登录注册页面使用 ListView 来布局类似 Scrollview 或者 tableview 的效果: 页面可以滑动.
 6. elevation: 标高值，类似于  Z 轴方向上的值
 7. 所有的内容和组件背后都有 backdrop，它包括了后层（back layer）（用来显示 actions 和 filters）以及前层（front layer）（用来显示内容）。你可以使用 backdrop 来显示交互信息和操作，比如导航栏和内容过滤器
+8. `semanticLabel` 用于语义提示, 可用于表明对应 widget 行为目的. 比如登录的按钮, 可设置为 ```semanticLabel: 'login',```
+9. 按钮的 `onPressed` 属性值设置为 null, 表示该按钮会禁用, 传递空的代码块, 按钮可用
 
 ### flutter 常见命令
 

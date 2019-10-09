@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/product.dart';
+import 'login.dart';
 
 // 将其标记为 @required。 这是当构造函数中的属性没有默认值且不能为 null 时的最佳做法，切记这一标记。
 // 请注意，可在构造函数之后添加了 asserts 语句，用来检查传递过来的值不会为 null
@@ -98,28 +99,36 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     var appBar = AppBar(
       brightness: Brightness.light,
       elevation: 0.0,
-      leading: IconButton(
-        icon: Icon(Icons.menu),
-        onPressed: _toggleBackdropLayerVisibility,
+      // replaced leading widget
+      title: _BackdropTitle(
+        listenable: _controller.view,
+        onPress: _toggleBackdropLayerVisibility,
+        frontTitle: widget.frontTitle,
+        backTitle: widget.backTitle,
       ),
-      title: Text('SHRINE'),
       actions: <Widget>[
         IconButton(
           icon: Icon(
             Icons.search,
-            semanticLabel: 'search',
+            semanticLabel: 'login',
           ),
           onPressed: () {
-
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+            );
           },
         ),
         IconButton(
           icon: Icon(
             Icons.tune,
-            semanticLabel: 'filter',
+            semanticLabel: 'login',
           ),
           onPressed: () {
-
+            Navigator.push(
+              context, 
+              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+            );
           },
         ),
       ],
@@ -177,3 +186,90 @@ class _FrontLayer extends StatelessWidget {
 
   }
 }
+
+// 提供带有动画效果的菜单图标， 和在不同层级的标题之间切换的过渡动画
+
+class _BackdropTitle extends AnimatedWidget {
+  final Function onPress;
+  final Widget frontTitle;
+  final Widget backTitle;
+
+  const _BackdropTitle({
+    Key key,
+    Listenable listenable,
+    this.onPress,
+    @required this.frontTitle,
+    @required this.backTitle,
+  }) : assert(frontTitle != null),
+       assert(backTitle != null),
+       super(key: key, listenable: listenable);
+
+  @override
+  Widget build(BuildContext context) {
+    final Animation<double> animation = this.listenable;
+
+    return DefaultTextStyle(
+        style: Theme.of(context).primaryTextTheme.title,
+        softWrap: false,
+        overflow: TextOverflow.ellipsis,
+        child: Row(children: <Widget>[
+
+          // branded icon
+          SizedBox(
+            width: 72.0,
+            child: IconButton(
+              padding: EdgeInsets.only(right: 8.0),
+              onPressed: this.onPress,
+              icon: Stack(children: <Widget>[
+                Opacity(
+                  opacity: animation.value,
+                  child: ImageIcon(AssetImage('assets/slanted_menu.png')),
+                ),
+                FractionalTranslation(
+                  translation: Tween<Offset>(
+                    begin: Offset.zero,
+                    end: Offset(1.0, 0.0),
+                  ).evaluate(animation),
+                  child: ImageIcon(AssetImage('assets/diamond.png')),
+                ),
+              ]),
+            ),
+          ),
+
+          Stack(
+            children: <Widget>[
+              Opacity(
+                opacity: CurvedAnimation(
+                  parent: ReverseAnimation(animation),
+                  curve: Interval(0.5, 1.0),
+                ).value,
+                child: FractionalTranslation(
+                  translation: Tween<Offset>(
+                    begin: Offset.zero,
+                    end: Offset(0.5, 0.0),
+                  ).evaluate(animation),
+                  child: backTitle,
+                ),
+              ),
+
+              Opacity(
+                opacity: CurvedAnimation(
+                  parent: animation,
+                  curve: Interval(0.5, 1.0),
+                ).value,
+                child: FractionalTranslation(
+                  translation: Tween<Offset>(
+                    begin: Offset(-0.25, 0.0),
+                    end: Offset.zero,
+                  ).evaluate(animation),
+                  child: frontTitle,
+                ),
+              ),
+            ],
+          ),
+        ]),
+    );
+  }
+
+}
+
