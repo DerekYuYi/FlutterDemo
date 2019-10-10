@@ -151,6 +151,8 @@ mainAxisSize: .max, .min
   4. Expanded Widget: 可以包一个组件， 并且约定组件填满控件
   5. SizedBox widget: 当包装一个组件，组件的宽高取决于设置的宽高; 当没有包装组件时, 则创建一个空的 space
   6. Spacer Widget: 在不同组件之间创建空白。与 SizedBox 的不同
+  7. Stack: 不是线性(水平或者垂直)的. 而是按照绘制顺序将 Widget 堆叠在一起. 
+  8. Container: 创建一个可见的矩形元素. Container 可以使用 BoxDecoration 来进行装饰. 如背景, 边框, 或阴影等. Container 可以设置外边距、内边距和尺寸的约束等等
 
 ### Codelabs - FriendlychatApp 小应用
 

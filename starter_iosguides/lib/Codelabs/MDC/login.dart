@@ -8,7 +8,7 @@ class AccentColorOverride extends StatelessWidget {
 
   final Color color;
   final Widget child;
-
+  
   @override
   Widget build(BuildContext context) {
     return Theme(
