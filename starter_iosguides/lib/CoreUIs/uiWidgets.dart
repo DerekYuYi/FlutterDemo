@@ -117,6 +117,10 @@ class ShoppingList extends StatefulWidget {
 
   final List<Product> products;
 
+  // The framework calls createState the first time a widget appears at a given location
+  // in the tree, If the parent rebuilds and uses the same type of widget (with the same key),
+  // the framework re-uses the State object instead of creating a new State object.
+
   @override
   _ShoppingListState createState() => _ShoppingListState();
 }
@@ -154,8 +158,5 @@ class _ShoppingListState extends State<ShoppingList> {
     );
   }
 }
-
-
-
 
 

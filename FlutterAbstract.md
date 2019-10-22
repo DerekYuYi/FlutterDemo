@@ -54,7 +54,10 @@ C c = new C();
 ### 关键字
 1. @required: 是当构造函数中的属性没有默认值且不能为 null 时的最佳做法. 可在构造函数之后添加 asserts 语句, 用来检查传递过来的值不会为 null.
 2. final: 修饰的属性表示不能改变
-3. await, async, this, factory, extends, dynamic
+3. async: 表示函数是异步的, 定义的函数会返回一个  Future 对象, 可以使用 then 方法添加回调函数, 继续链式调用.
+4. await: 后面跟着是一个 Future, 表示等待该异步任务完成, 异步任务完成后才会往下走; await 必须出现在 async 函数内部.
+5. Future: 与 JavaScript 中的 Promise 相似. 表示一个异步操作的最终完成及其结果值的表示. 简单的来说, 异步成功了, 就执行成功的操作, 异步失败了就捕获错误. 一个 Future 只会对应一个结果.
+4. this, factory, extends, dynamic
 4. get && set: 属性的 getter 方法, 属性的 setter 方法, 例如: ``` bool get _frontLayerVisible { return true }```
 
 
@@ -66,8 +69,6 @@ Dart 语法糖:
 
 - ViewControllers VS Widgets. Flutter 中的屏幕是 Widgets 表示的, 因为 ”万物皆 widget“. 使用 Navigator 在不同的 Route 之间切换, 而不同的 route 则代表了不同的屏幕或页面, 或是不同的状态, 也可能是渲染相同的数据.
 
-
-**如果实现一个有状态的 Widget**: 
 
 1. Stateless Widget 是不可变的. Stateful widgets 持有的状态可能在 widget 生命周期中发生变化, 实现一个 Stateful widget 至少需要两个类:
 
@@ -197,6 +198,46 @@ mainAxisSize: .max, .min
 8. `semanticLabel` 用于语义提示, 可用于表明对应 widget 行为目的. 比如登录的按钮, 可设置为 ```semanticLabel: 'login',```
 9. 按钮的 `onPressed` 属性值设置为 null, 表示该按钮会禁用, 传递空的代码块, 按钮可用
 
+### Flutter 状态更新详解
+
+以下来自 [flutter官方网站开发文档详解](https://flutter.cn/docs/development/ui/widgets-intro):
+
+ShoppingList 类继承自 StatefulWidget, 这意味着这个 widget 存储着可变状态. 当 shoppingList 首次插入到 widget 树中, 框架调用 `createState()` 来创建 `_ShoppingListState`的新实例. 以与树中的该位置相关联. 当该 widget 的父 widget 重建时, 父 widget 首先
+会创建一个 ShoppingList 的实例, 但是框架会复用之前创建的 `_ShoppingListState`, 而不会重新调用 createState.
+
+为了访问当前 ShoppingList 的属性, _ShoppingListState 可以使用它的 widget 属性. 当父组件重建一个新的 ShoppingList 时, `_ShoppingListState` 会使用新的 widget 值来创建. 如果希望在 widget 属性更改时收到通知, 则可以重写 `didUpdateWidget()` 函数,
+该函数将 oldWidget 作为参数传递, 以便将 oldWidget 与当前 widget 比较.
+
+当处理点击回调时, `_ShoppingListState` 通过增加或删除 _shoppingCart 中的产品来改变其内部状态. 为了通知框架它改变了它的内部状态, 需要调用 setState(). 调用 setState() 会将该 widget 标记为 **dirty**, 并且计划在下次应用需要更新屏幕时重新构建它. 如果在修改 widget 内部状态时忘记使用 setState, 框架将不知道这个 widget 是 "dirty", 并且可能不会调用 widget 的 build() 方法, 这意味着用户界面可能不会更新以展示新的状态. 通过以这种方式管理状态，你不需要编写用于创建和更新子 widget 的单独代码。相反，你只需实现 build 函数，它可以处理这两种情况
+
+**widget 的生命周期**
+
+在 StatefulWidget 上调用 createState() 之后, 框架将新的状态对象插入到树中, 然后在状态对象上调用 initState(). State 的子类可以重写 initState 来完成只需要发生一次的工作. 例如, 配置动画, 订阅平台服务.
+
+当不再需要状态对象时, 框架会调用状态对象的 dispose() 方法. 可以重写 dispose 方法来清理状态. 例如取消计时器, 移除动画, 取消订阅平台服务
+
+**为你的 Flutter 添加交互体验**
+
+- 一个 widget 的状态保存在一个 State 对象中. 它和 widget 显式分离. Widget 的状态是一些可以更改的值. 如一个滑动条的当前值, 或者一个复选框是否被选中. 当 widget 发生改变时, State 对象调用 setState(), 告诉框架去重绘 widget.
+- 创建一个有状态 widget 的三要素:
+	1. 创建两个类: 一个 StatefulWidget 的子类和 State 的子类;
+	2. State 类包含该 widget 的可变状态并定义该 widget 的 build() 方法;
+	3. 当 widget 状态改变时, State 对象调用 setState(), 告诉框架去重绘 widget.
+
+- **状态管理**: 
+	1. widget 管理自己的状态
+	2. 父 widget 管理此 widget 的状态
+	3. 混搭管理
+
+- 如何决定使用哪种管理方法?遵循一下原则:
+	1. 如果状态是用户数据, 如复选框的选中状态、滑块的位置, 则该状态最好由父 widget 管理;
+	2. 如果讨论的状态是有关界面外观效果的, 例如动画, 那么状态最好由 widget 本身来管理;
+	3. 如果不是很清楚, 首选是在父 widget 中管理状态.
+
+**用户界面 - 资源和图片** (详见 开发文档 -> 用户界面 -> 资源和图片)
+
+**动画效果**
+
 ### flutter 常见命令
 
 flutter pub get: 更新导入的新库
@@ -254,3 +295,4 @@ pwd: 输出当前目录的路径
 + commnand + 1: 切换左侧侧边栏
 + 打开悬停注释： Preference -> Editor -> General -> `show quick documentation on mouse move Delay (ms): 500`
 
+	  
