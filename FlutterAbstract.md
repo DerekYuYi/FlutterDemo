@@ -237,6 +237,36 @@ ShoppingList 类继承自 StatefulWidget, 这意味着这个 widget 存储着可
 **用户界面 - 资源和图片** (详见 开发文档 -> 用户界面 -> 资源和图片)
 
 **动画效果**
+  
+- flutter 提供多渡动画, 比如 FadeTransition, SizeTransition 和 SlideTransition, 这些简单的动画可以通过设置起点和终点触发.
+- __Animation__: Flutter 动画库中的核心类, 插入用于指导动画的值. 该对象知道动画目前的状态(是否开始, 暂停, 前进或则收后退), 但是对屏幕上的内容一无所知. 常见是 `Animation<double>`, 还可以插入 `Animation<Color>` 和 `Animation<Size>`. Animation 对象具有状态, 它的当前值在 `.value` 中始终可用.
+- __AnimationController__: 管理 Animation. 特殊 Animation 对象. 每当硬件准备新帧时, 他都会生成一个值. 初始化时 vsync 的存在防止后台动画消耗不必要的资源. 默认情况下时 0.0 - 1.0. 如果需要不同的范围和不同的数据类型, 使用 Tween.
+- **CurvedAnimation**: 非线性曲线
+- **Tween**为动画对象插入一个范围值, 例如, Tween 可以定义插入值由红到蓝, 或从 0 到 255. 继承自 Animatable<T>. ColorTween 指定两种颜色之间的级数. Tween 不存储任何状态. 而是提供 evaluate 方法, 将映射函数应用于动画当前值. 
+- **动画通知**: 使用 Listeners 和 StatusListeners 监视动画状态变化. 当动画值改变时调用 Listener. Listener 最常用的操作是调用 setState() 进行重建. 当一个动画开始，结束，前进或后退时，会调用 StatusListener，用 AnimationStatus 来定义
+- 使用 AnimatedWidget 代替 addListener() 和 setState() 创建动画 widget. AnimatedWidget 不需要保持 State 对象来 hold 动画.
+- AnimatedBuilder 描述动画, 这个动画作为 build 方法一部分.如果你只是单纯需要用可重复使用的动画定义一个 widget, 使用 AnimatedWidget. AnimatedBuilder 自动监听动画对象提示，并在必要时在 widget 树中标出，所以这时不需要调用 addListener().
+
+**主过渡动画**
+
+ - hero 是指不同屏幕之间飞行的 widgets. hero animation: 把一个 widget 从一个屏幕飞到另一个屏幕的动画 （在 iOS 这被成为转场动画？？）
+ - 使 hero 从一个屏幕飞行到另一个屏幕。
+ - Hero widget 实现的动画风格被普遍称为：shared element transitions or shared element animations. 共享元素转换和共享元素动画。
+ - hero animation 基本构成
+ 	1. 在不同 route 之间有两个 hero widgets, 他们的 tag 相同;
+ 	2. Navigator 管理 routes stack.
+ 	3. 从 route stack 中 Pushing 或者 Poping 触发动画.
+ 	4. 当 hero 从一个 route 飞到另一个 route 时, flutter framework 计算 rectangle tween, 其定义 hero 的边界. 在飞行期间, hero 被移动到 应用覆盖层, 所以它出现在两个 routes 的顶层.
+ - **Hero的工作原理**: 
+ 	1. Before transition: source hero 在 source tree widget 中. 此时目标 route 不存在, overlay 是空的;
+ 	2. Pushing 触发动画. 在动画时间 t = 0.0 时, flutter 做两个事:
+ 		1. 计算目标 hero 的离屏路径. Flutter 现在知道 hero 在哪里结束. 
+ 		2. 把目标 hero 放在 overlay 中,和 source route 中的位置和大小一样. 添加一个 hero 到 overlay 并且改变 Z 轴属性使他出现在所有 routes 的最上面;
+ 		3. 把 source hero 移除屏幕.
+ 	3. After transition. 飞行动画结束. 
+ 		1. flutter 把 hero 从 overlay 移动到 目标 route. overlay 层此时是空的.
+ 		2. 目标 hero 出现在目标 route 的最终位置上;
+ 		3. source hero 在 source route 上重新保存.
 
 ### flutter 常见命令
 
