@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 import 'package:starter_iosguides/CoreUIs/TutorialAnimations.dart' as animations;
+import 'package:starter_iosguides/CoreUIs/layoutTutorial.dart' as layoutTutorial;
 
 //import 'package:starter_iosguides/Codelabs/MDC/app.dart' as shrine;
 //import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/app.dart' as storeInIOSApp;
 //import 'package:starter_iosguides/Codelabs/CupertinoStoreApp/model/app_state_model.dart';
 //import 'package:provider/provider.dart';
-
 
 /// 给 iOS 开发者的 Flutter 指南 （https://flutter-io.cn/docs/get-started/flutter-for/ios-devs）
 /*
