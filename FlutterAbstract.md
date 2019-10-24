@@ -267,7 +267,14 @@ ShoppingList 类继承自 StatefulWidget, 这意味着这个 widget 存储着可
  		1. flutter 把 hero 从 overlay 移动到 目标 route. overlay 层此时是空的.
  		2. 目标 hero 出现在目标 route 的最终位置上;
  		3. source hero 在 source route 上重新保存.
-
+		
+### 数据调用和后端
+ 
+ 状态: 当任何时候你需要重建你的用户界面时所需要的数据
+ 短时状态: 局部状态. 一个独立 widget 中的状态;
+ 应用状态: 全局状态. 也称为共享状态. 
+ 
+ 
 ### flutter 常见命令
 
 flutter pub get: 更新导入的新库
@@ -304,7 +311,7 @@ brew install 软件名
 
 `flutter run`: 在 flutter项目 的根目录下运行
 
- 
+
 ### 小知识点 
 
 终端下进入 Application 后, 没有一个应用的原因:
