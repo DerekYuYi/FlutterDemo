@@ -30,7 +30,7 @@ class CatalogModel {
   }
 }
 
-
+// 所有的子类是不可变的， 所有的实例字段也是不可变的
 @immutable
 class Item {
   final int id;

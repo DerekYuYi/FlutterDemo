@@ -268,14 +268,38 @@ ShoppingList 类继承自 StatefulWidget, 这意味着这个 widget 存储着可
  		2. 目标 hero 出现在目标 route 的最终位置上;
  		3. source hero 在 source route 上重新保存.
 		
-### 数据调用和后端
+-  数据调用和后端
  
  状态: 当任何时候你需要重建你的用户界面时所需要的数据
  短时状态: 局部状态. 一个独立 widget 中的状态;
  应用状态: 全局状态. 也称为共享状态. 
  
  
+#### 使用 provider 类和 provider package 管理状态
+
+  - provider package 中提供三个概念:
+  	- ChangeNotifier: flutter sdk 中的类. 它用于向监听器发送通知. 换言之，如果被定义为 ChangeNotifier，你可以订阅它的状态变化。（这和大家所熟悉的观察者模式相类似). ChangeNotifier 是一种能够封装应用程序状态的方法.
+  	- ChangeNotifierProvider: ChangeNotifierProvider widget 可以向其子孙节点暴露一个 ChangeNotifier 实例.
+  	- Consumer: Consumer widget 唯一必须的参数就是 builder。当 ChangeNotifier 发生变化的时候会调用 builder 这个函数。（换言之，当你在模型中调用 notifyListeners() 时，所有和 Consumer 相关的 builder 方法都会被调用。）
+
+#### Json 和序列化数据
+
+#### 应用的无障碍和国际化
+
+
+### 平台集成
+	
+ - 撰写双端平台代码(插件编写实现) battery 例子.
+
+### Packages(纯 Dart 和原生插件)
+
+ - 使用 Packages
+ - Package 的开发和使用
+ 
 ### flutter 常见命令
+
+flutter 的命令执行都需要在 flutter sdk 安装包的目录上执行. 比如 flutter sdk 安装在 Document -> flutterLibrary 下,
+则应该在该目录下配置 `export PATH="$PATH:`pwd`/flutter/bin"`, 
 
 flutter pub get: 更新导入的新库
 flutter packages get: 下载下来的三方库放在 flutter 包的目录下, 而不一定是在项目目录下面.

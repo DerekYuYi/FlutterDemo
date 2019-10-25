@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'cartlog.dart';
 
+// CartModel 成为监听器。 CartModel 实例的状态被 ChangeNotifier 监控。 类似于观察者模式
 class CartModel extends ChangeNotifier {
 
   // The current catalog. Used to construct items from numeric ids.
