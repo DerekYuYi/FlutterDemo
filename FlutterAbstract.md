@@ -198,6 +198,19 @@ mainAxisSize: .max, .min
 8. `semanticLabel` 用于语义提示, 可用于表明对应 widget 行为目的. 比如登录的按钮, 可设置为 ```semanticLabel: 'login',```
 9. 按钮的 `onPressed` 属性值设置为 null, 表示该按钮会禁用, 传递空的代码块, 按钮可用
 
+### FLutter 中的布局
+
+1. 标准 widgets 和 Meterial 库中的 widgets. 任何 app 都可以使用 widget 库，但是 Meterial 库中的组件只能在 Meterial app 中使用。
+2. 标准 widgets: Container, GridView, ListView, Stack
+    - Container: 向 widget 增加 padding、margin、borders、background color 或其他的装饰
+    - GridView: 将 widgets 展示为一个可滚动的网格（collectionView）
+    - ListView: 将 widgets 展示为一个可滚动的列表
+    - Stack: 将 widgets 覆盖在另一个的上面，叠加子控件作用
+3. Meterial widgets: Card, ListTile
+    - Card: 将相关信息整理到一个有圆角和阴影的盒子中， 通常与 ListTile 一起使用， 比如显示三个 ListTile 的卡片
+    - ListTile: 将最多三行的文本、可选的导语以及后面的图标组织在一行中 （类型 UITableViewCell 的 default style 样式）
+
+
 ### Flutter 状态更新详解
 
 以下来自 [flutter官方网站开发文档详解](https://flutter.cn/docs/development/ui/widgets-intro):

@@ -138,7 +138,7 @@ class _ShoppingListState extends State<ShoppingList> {
         _shoppingCart.remove(product);
     });
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
